@@ -5,36 +5,29 @@ theme: hugo-theme-stack
 #分页，一页多少篇文章
 paginate: 5
 title: Example Site
-copyright: Example Person
+copyright: gogopaopao
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
-DefaultContentLanguage: en
+DefaultContentLanguage: zh-cn
 
 # Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
 # This will make .Summary and .WordCount behave correctly for CJK languages.
-hasCJKLanguage: false
+hasCJKLanguage: true
 
 languages:
-    en:
-        languageName: English
-        title: Example Site
-        weight: 1
-        params:
-            description: Example description
+    # en:
+    #     languageName: English
+    #     title: Example Site
+    #     weight: 1
+    #     params:
+    #         description: Example description
     zh-cn:
-        languageName: 中文
-        title: 演示站点
+        languageName: 简体中文
+        title: 主页
         weight: 2
         params:
-            description: 演示说明
-    ar:
-        languageName: عربي
-        languagedirection: rtl
-        title: موقع تجريبي
-        weight: 3
-        params:
-            description: وصف تجريبي
+            description: 主页威威
 
 services:
     # Change it to your Disqus shortname before using
@@ -53,10 +46,14 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
+    #重要
+    #网站后缀问题？？？？？直接/favicon.ico不行 
+    #和baseurl有关
+    favicon: /newstack/favicon.ico
+    # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
-        since: 2020
+        since: 2025
         customText:
 
     dateFormat:
@@ -64,23 +61,27 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 🍥
-        subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        emoji: 💻              # 头像上方的动态表情
+        subtitle: "个人签名/简介"  # 你的个人签名/简介
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            src: "img/avatar.png"  # 注意：图片必须放在 主文件的assets/img/ 文件夹下
+
 
     article:
         math: false
+        # 目录，跳转
         toc: true
+        # 显示阅读时常
         readingTime: true
-        license:
-            enabled: true
+        license: #不知道有啥用
+            enabled: false
             default: Licensed under CC BY-NC-SA 4.0
 
+    # 评论区
     comments:
-        enabled: true
+        enabled: false
         provider: disqus
 
         disqusjs:
@@ -171,9 +172,11 @@ params:
             - type: categories
               params:
                   limit: 10
-            - type: tag-cloud
-              params:
-                  limit: 10
+            # 标签，感觉跟分类没啥区别
+            # - type: tag-cloud
+            #   params:
+            #       limit: 10
+        #点进去文章的分页
         page:
             - type: toc
 
@@ -190,7 +193,8 @@ params:
             enabled: false
             local: false
             src:
-
+            
+    # 颜色模式
     colorScheme:
         # Display toggle
         toggle: true
@@ -228,8 +232,8 @@ related:
     threshold: 60
     toLower: false
     indices:
-        - name: tags
-          weight: 100
+        # - name: tags
+        #   weight: 100
 
         - name: categories
           weight: 200
