@@ -298,6 +298,14 @@
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/newstack/categories/%E9%80%9F%E6%9F%A5/" >
+                速查
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
@@ -370,13 +378,14 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
 </span></span><span class="line"><span class="cl">git add .
-</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;</span><span class="k">$(</span>date <span class="s1">&#39;+%Y-%m-%d %H:%M:%S&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;%date% %time%&#34;</span>
 </span></span><span class="line"><span class="cl">git branch -M main
 </span></span><span class="line"><span class="cl">git remote add origin <span class="o">{</span>你的github仓库地址<span class="o">}</span>
 </span></span><span class="line"><span class="cl">git push -u origin main
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>关于自动生成的两个+++号间的内容，如何配置，如下：</p>
+</div><p>git remote add origin {你的github仓库地址}只要使用过一回就不用再配置了</p>
+<p>关于自动生成的两个+++号间的内容，如何配置，如下：</p>
 <h1 id="-hugo--stack-主题文章配置完全笔记">📝 Hugo + Stack 主题文章配置完全笔记
 </h1><h2 id="一-核心概念front-matter">一、 核心概念：Front Matter
 </h2><p>在使用 <code>hugo new</code> 命令创建文章时，文件顶部被 <code>+++</code> (TOML格式) 或 <code>---</code> (YAML格式) 包裹的区域称为 <strong>Front Matter</strong>。它不属于正文，专门用于告诉 Hugo 和主题如何解析、渲染和配置这篇文章。</p>
@@ -513,6 +522,28 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/newstack/p/markdown%E5%9B%BE%E7%89%87%E9%80%9F%E6%9F%A5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Markdown图片速查</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
