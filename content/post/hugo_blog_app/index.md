@@ -1,7 +1,7 @@
 +++
 title = 'HUGO博客使用教程'
 date = 2026-03-03T00:41:24+08:00
-
+categories = ["速查"]
 +++
 
 调试命令：hugo server -D
@@ -17,7 +17,7 @@ GitHub自动上传  （cmd中）
 ```bash
 git init
 git add .
-git commit -m "$(date '+%Y-%m-%d %H:%M:%S')"
+git commit -m "%date% %time%"
 git branch -M main
 git remote add origin {你的github仓库地址}
 git push -u origin main
@@ -25,7 +25,7 @@ git push -u origin main
 
 
 
-
+git remote add origin {你的github仓库地址}只要使用过一回就不用再配置了
 
 
 
