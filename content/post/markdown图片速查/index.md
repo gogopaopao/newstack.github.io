@@ -1,7 +1,7 @@
 +++
 title = 'Markdown图片速查'
 date = 2026-03-17T17:38:37+08:00
-categories = ["速查"]
+categories = ["速查","博客搭建"]
 +++
 
 为什么在博客不能显示图片：

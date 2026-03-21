@@ -2,6 +2,7 @@
 title = '如何阅读深度学习相关文献'
 date = 2026-01-15
 categories = ["深度学习", "文献阅读"]
+image = '1.png'
 +++
 
 ### 绝大多数论文都是以下的八股结构
@@ -11,7 +12,7 @@ categories = ["深度学习", "文献阅读"]
 3. intro  导言
 4. method  相关工作，重要部分：你提出的算法
 5. exp  实验证明可行性
-6. conclusion 结论s
+6. conclusion 结论
 
 
 

@@ -243,9 +243,23 @@ markup:
         renderer:
             ## Set to true if you have HTML content inside Markdown
             unsafe: true
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - - \[
+                          - \]
+                        - - $$
+                          - $$
+                    inline:
+                        - - \(
+                          - \)
+                        - - $
+                          - $
     tableOfContents:
         endLevel: 4
-        ordered: true
+        ordered: false
         startLevel: 2
     highlight:
         noClasses: false
