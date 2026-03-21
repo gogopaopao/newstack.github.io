@@ -24,7 +24,7 @@ languages:
     #         description: Example description
     zh-cn:
         languageName: 简体中文
-        title: 主页
+        title: 从容的老师傅の博客
         weight: 2
         params:
             description: 主页威威
@@ -62,11 +62,11 @@ params:
 
     sidebar:
         emoji: 💻              # 头像上方的动态表情
-        subtitle: "个人签名/简介"  # 你的个人签名/简介
+        subtitle: "从容的 老师傅"  # 你的个人签名/简介
         avatar:
             enabled: true
             local: true
-            src: "img/avatar.png"  # 注意：图片必须放在 主文件的assets/img/ 文件夹下
+            src: "img/头像.jpeg"  # 注意：图片必须放在 主文件的assets/img/ 文件夹下
 
 
     article:
