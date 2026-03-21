@@ -13,7 +13,7 @@
         <pubDate>Tue, 17 Mar 2026 16:36:33 +0800</pubDate>
         
         <guid>https://gogopaopao.github.io/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/</guid>
-        <description>&lt;h2 id=&#34;先搞清楚数据集的特征和标签是什么&#34;&gt;先搞清楚数据集的特征和标签是什么？
+        <description>&lt;img src="https://gogopaopao.github.io/newstack/img%5C%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE.jpg" alt="Featured image of post 滚动轴承数据集学习" /&gt;&lt;h2 id=&#34;先搞清楚数据集的特征和标签是什么&#34;&gt;先搞清楚数据集的特征和标签是什么？
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/feature.png&#34;
 	width=&#34;782&#34;
 	height=&#34;223&#34;
@@ -55,6 +55,23 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;数据采集特性&#34;&gt;数据采集特性
 &lt;/h3&gt;&lt;p&gt;​	学习和测试数据集都在7z压缩文件夹中提供。每个都包含名为&lt;strong&gt;acc_xxxxx.csv的振动&lt;/strong&gt;ASCII 文件和名为&lt;strong&gt;temp_xxxxx.csv的温度&lt;/strong&gt;ASCII文件。&lt;/p&gt;
+&lt;p&gt;振动信号(水平和垂直)  轴承的上下左右振动&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;采样频率: 25.6kHz&lt;/li&gt;
+&lt;li&gt;记录:每10秒记录2560个样本(即 1/10 s )&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE.png&#34;
+	width=&#34;270&#34;
+	height=&#34;135&#34;
+	srcset=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE_hu2784163215907819008.png 480w, https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE_hu2371803287266595982.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;480px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h4 id=&#34;温度之于寿命预测影响太小&#34;&gt;温度之于寿命预测影响太小
 &lt;/h4&gt;&lt;p&gt;看数据发现没有温度的CSV文件，于是疑惑&lt;/p&gt;
 &lt;p&gt;​	在基于深度学习的滚动轴承剩余寿命预测领域，&lt;strong&gt;只用振动信号（不用温度）不仅是“可以的”，而且是“绝对的主流”。&lt;/strong&gt;&lt;/p&gt;
@@ -90,6 +107,70 @@
 		data-flex-basis=&#34;233px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h5 id=&#34;以第一行数据为例0552-0146水平竖直代表什么意思&#34;&gt;以第一行数据为例：0.552，-0.146(水平，竖直)代表什么意思
+&lt;/h5&gt;&lt;p&gt;根据数据集描述文档，加速度计型号 DYTRAN 3035B&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;50 g 测量范围  - 100mV/g&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;水平：0.552&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代表在这个瞬间，轴承在水平方向上受到了 0.552g 的加速度（相当于它承受了一半的自身重量的侧向推力）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;竖直：-0.146&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代表在这个瞬间，轴承在竖直方向上受到了 0.146g 的加速度。&lt;strong&gt;这里的负号（-）仅仅代表“方向”&lt;/strong&gt;。假设传感器规定“向上震动”为正，那么“-0.146”就表示这一瞬间轴承正在向&lt;strong&gt;下&lt;/strong&gt;震动。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;准确度定义验证模型好坏&#34;&gt;准确度定义，验证模型好坏
+&lt;/h3&gt;&lt;p&gt;​	团队的得分基于其RUL结果,这些结果已转换为预测的百分比误差。分别记 $\overline{RUL_i}$ 和 $ActRUL_i$ 为参与者估算的轴承剩余使用寿命, $ActRUL_i$ 为实际待预测的(actual) RUL(其中 $i \in [1,11]$ 代表表1中定义的测试轴承)。实验 $i$ 的百分比误差定义为:&lt;/p&gt;
+$$
+\% Er_i = 100 \times \frac{ActRUL_i - \widehat{RUL_i}}{ActRUL_i} \tag{1}
+$$
+&lt;p&gt;
+​	\( \ {\% E{r}_{i} &gt; 0} \) ：实际时间大于预估——高估了轴承&lt;/p&gt;
+&lt;p&gt;​	\( \ {\% E{r}_{i} &gt; 0} \) ：实际时间小于预估——低估了轴承&lt;/p&gt;
+&lt;p&gt;​	低估和高估的情况&lt;strong&gt;不应该以相同方式考虑&lt;/strong&gt;：早期RUL预测相关的良好估算表现 (即 \( \left. {\% E{r}_{i} &gt; 0}\right) \) ,&lt;strong&gt;考虑提前拆除&lt;/strong&gt;的情况，以及对超出实际组件RUL的RUL估算，应该给予更严重的扣除(即 \(\left. {\% E{r}_{i} &lt; 0}\right)\) 。因此,实验 \(i\) 的RUL估算&lt;strong&gt;准确度&lt;/strong&gt;得分定义如下。函数图展示了该评分函数的演变过程。&lt;/p&gt;
+&lt;p&gt;​	说人话就是：&lt;strong&gt;高估轴承寿命的代价，远比低估的代价要惨痛得多&lt;/strong&gt;&lt;/p&gt;
+$$
+{A}_{i} = \left\{  \begin{array}{ll} {ex}{p}^{-\ln \left( {0.5}\right) .\left( {E{r}_{i}/5}\right) } &amp; \text{ if }E{r}_{i} \leq  0 \\  {ex}{p}^{+\ln \left( {0.5}\right) .\left( {E{r}_{i}/{20}}\right) } &amp; \text{ if }E{r}_{i} &gt; 0 \end{array}\right. \tag{2}
+$$
+&lt;p&gt;
+即
+&lt;/p&gt;
+$$
+A_i = \begin{cases} 0.5^{-Er_i / 5} &amp; \text{当 } Er_i \le 0 \text{ （高估寿命，机器炸机）} \\ 0.5^{Er_i / 20} &amp; \text{当 } Er_i &gt; 0 \text{ （低估寿命，提前拆除）} \end{cases}
+$$
+&lt;p&gt;
+官方通过把&lt;strong&gt;分母&lt;/strong&gt;分别设定为 5 和 20，强制画出了两条下降速度完全不同的曲线：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;高估的悬崖&lt;/strong&gt;：向左走（高估），分母是 5，分数掉得极快，是个陡峭的悬崖。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;低估的缓坡&lt;/strong&gt;：向右走（低估），分母是 20，分数掉得慢，是个平缓的下坡。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE.jpg&#34;
+	width=&#34;722&#34;
+	height=&#34;439&#34;
+	srcset=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE_hu2011434099825033110.jpg 480w, https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE_hu15204571121963953336.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;函数图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;394px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;所有 RUL 估计的最终得分被定义为所有实验得分的平均值:	
+&lt;/p&gt;
+\[
+\text{ Score } = \frac{1}{11}\mathop{\sum }\limits_{{i = 1}}^{{11}}\left( {A}_{i}\right) \tag{3}
+\]
+&lt;h3 id=&#34;需估算的实际剩余使用寿命rul&#34;&gt;需估算的实际剩余使用寿命(RUL)
+&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;Test set&lt;/td&gt;&lt;td&gt;Actual RUL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_3&lt;/td&gt;&lt;td&gt;5730 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_4&lt;/td&gt;&lt;td&gt;339 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_5&lt;/td&gt;&lt;td&gt;1610 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_6&lt;/td&gt;&lt;td&gt;1460 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_7&lt;/td&gt;&lt;td&gt;7570 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_3&lt;/td&gt;&lt;td&gt;7530 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_4&lt;/td&gt;&lt;td&gt;1390 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_5&lt;/td&gt;&lt;td&gt;3090 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_6&lt;/td&gt;&lt;td&gt;1290 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_7&lt;/td&gt;&lt;td&gt;580 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing3_3&lt;/td&gt;&lt;td&gt;820 s&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/583606882&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;IEEE PHM 2012 Prognostic challenge Outline, Experiments, Scoring of results, Winners&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_46698539/article/details/133618414?ops_request_misc=elastic_search_misc&amp;amp;request_id=1a42fcb9a074ae9088bcd8c696562fec&amp;amp;biz_id=0&amp;amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-133618414-null-null.142%5ev102%5epc_search_result_base3&amp;amp;utm_term=PHM2012&amp;amp;spm=1018.2226.3001.4187&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PRONOSTIA : An experimental platform for bearings accelerated degradation tests.&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         

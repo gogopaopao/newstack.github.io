@@ -7,7 +7,200 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>gogopaopao</copyright>
-        <lastBuildDate>Tue, 17 Mar 2026 17:38:37 +0800</lastBuildDate><atom:link href="https://gogopaopao.github.io/newstack/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 21 Mar 2026 16:50:43 +0800</lastBuildDate><atom:link href="https://gogopaopao.github.io/newstack/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo&#43;stack数学公式配置教程</title>
+        <link>https://gogopaopao.github.io/newstack/p/hugo-stack%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</link>
+        <pubDate>Sat, 21 Mar 2026 16:50:43 +0800</pubDate>
+        
+        <guid>https://gogopaopao.github.io/newstack/p/hugo-stack%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</guid>
+        <description>&lt;h1 id=&#34;hugo-stack-博客数学公式配置指南&#34;&gt;Hugo +Stack 博客数学公式配置指南
+&lt;/h1&gt;&lt;h2 id=&#34;一katex-引擎全局引入配置&#34;&gt;一、KaTeX 引擎全局引入配置
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1. 创建自定义头部文件&lt;/strong&gt; 在博客根目录按以下路径新建文件（如果对应文件夹不存在请手动创建）： &lt;code&gt;layouts/partials/head/custom.html&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. 注入 KaTeX 核心代码&lt;/strong&gt; 将以下代码完整复制并粘贴到 &lt;code&gt;custom.html&lt;/code&gt; 中并保存：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{ if or .Params.math .Site.Params.math }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;rel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;crossorigin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;defer&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;crossorigin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;defer&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;crossorigin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;addEventListener&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;DOMContentLoaded&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;renderMathInElement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nx&#34;&gt;delimiters&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;left&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;right&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;left&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;right&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;left&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\\(&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;right&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\\)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;left&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\\[&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;right&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\\]&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nx&#34;&gt;throwOnError&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{ end }}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;3. 生效机制&lt;/strong&gt; 保存后，配合文章 Front Matter 里的 &lt;code&gt;math = true&lt;/code&gt;，该脚本会自动在需要的页面加载并接管公式渲染。&lt;/p&gt;
+&lt;h2 id=&#34;二配置-goldmark-解析器透传核心避坑&#34;&gt;二、配置 Goldmark 解析器透传（核心避坑）
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;问题现象&lt;/strong&gt;：Hugo 默认的 Markdown 解析器会吞掉反斜杠，导致从 PDF 提取的公式定界符 &lt;code&gt;\(&lt;/code&gt; 和 &lt;code&gt;\[&lt;/code&gt; 在网页上变成纯文本 &lt;code&gt;(&lt;/code&gt; 和 &lt;code&gt;[&lt;/code&gt;，公式无法渲染。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;解决办法&lt;/strong&gt;：打开主配置文件 &lt;code&gt;hugo.yaml&lt;/code&gt;（或 &lt;code&gt;config.yaml&lt;/code&gt;），在 &lt;code&gt;markup&lt;/code&gt; 层级下添加 &lt;code&gt;passthrough&lt;/code&gt; 白名单。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：YAML 格式&lt;strong&gt;对缩进极其严格&lt;/strong&gt;，且特殊符号加单引号(不加也不影响)，一直失效的原因就是缩进有问题&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;markup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;goldmark&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;extensions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;passthrough&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;enable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;delimiters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                        &lt;/span&gt;- - &lt;span class=&#34;s1&#34;&gt;&amp;#39;\[&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                          &lt;/span&gt;- &lt;span class=&#34;s1&#34;&gt;&amp;#39;\]&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                        &lt;/span&gt;- - &lt;span class=&#34;s1&#34;&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                          &lt;/span&gt;- &lt;span class=&#34;s1&#34;&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;inline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                        &lt;/span&gt;- - &lt;span class=&#34;s1&#34;&gt;&amp;#39;\(&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                          &lt;/span&gt;- &lt;span class=&#34;s1&#34;&gt;&amp;#39;\)&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                        &lt;/span&gt;- - &lt;span class=&#34;s1&#34;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                          &lt;/span&gt;- &lt;span class=&#34;s1&#34;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;三-单篇文章开启公式支持&#34;&gt;三、 单篇文章开启公式支持
+&lt;/h2&gt;&lt;p&gt;在需要写公式的 Markdown 文件顶部的 Front Matter 中，加上 &lt;code&gt;math = true&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title = &amp;#39;你的文章标题&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date = 2026-03-17T16:36:33+08:00
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;math = true
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;常用的-markdownlatex-数学公式语法&#34;&gt;常用的 Markdown/LaTeX 数学公式语法
+&lt;/h2&gt;&lt;h3 id=&#34;1-公式分类&#34;&gt;&lt;strong&gt;1. 公式分类&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;行内公式&lt;/strong&gt;：夹在文字中间，使用单个 &lt;code&gt;$&lt;/code&gt; 包裹。代码：&lt;code&gt;$x+y=z$&lt;/code&gt;。 或者 &lt;code&gt;\(&lt;/code&gt;，&lt;code&gt;\)&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;块级公式&lt;/strong&gt;：单独占一行并居中，使用双 &lt;code&gt;$$&lt;/code&gt;  (&lt;code&gt;\[&lt;/code&gt;,&lt;code&gt;\]&lt;/code&gt;)包裹。代码：&lt;/p&gt;
+&lt;p&gt;代码段&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$$
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x+y=z
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$$
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-上下标&#34;&gt;&lt;strong&gt;2. 上下标&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;上标&lt;/strong&gt;：使用 &lt;code&gt;^&lt;/code&gt;。代码：&lt;code&gt;$x^2$&lt;/code&gt; -&amp;gt; $x^2$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;下标&lt;/strong&gt;：使用 &lt;code&gt;_&lt;/code&gt;。代码：&lt;code&gt;$A_i$&lt;/code&gt; -&amp;gt; $A_i$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提示&lt;/strong&gt;：如果上下标包含多个字符，需要用 &lt;code&gt;{}&lt;/code&gt; 括起来，如 &lt;code&gt;$A_{i+1}$&lt;/code&gt;。	$A_{i+1}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-分数与根号&#34;&gt;&lt;strong&gt;3. 分数与根号&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分数&lt;/strong&gt;：使用 &lt;code&gt;\frac{分子}{分母}&lt;/code&gt;。代码：&lt;code&gt;$\frac{1}{2}$&lt;/code&gt; 	$\frac{1}{2}$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;根号&lt;/strong&gt;：使用 &lt;code&gt;\sqrt{表达式}&lt;/code&gt;。代码：&lt;code&gt;$\sqrt{x^2+y^2}$&lt;/code&gt;-&amp;gt;$\sqrt{x^2+y^2}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-常用数学符号&#34;&gt;&lt;strong&gt;4. 常用数学符号&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;乘号与除号&lt;/strong&gt;：乘号 &lt;code&gt;\times&lt;/code&gt; ($\times$)，除号 &lt;code&gt;\div&lt;/code&gt; ($\div$)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;加减号与不等于&lt;/strong&gt;：加减 &lt;code&gt;\pm&lt;/code&gt; ($\pm$)，不等于 &lt;code&gt;\neq&lt;/code&gt; ($\neq$)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;约等于与等价&lt;/strong&gt;：约等于 &lt;code&gt;\approx&lt;/code&gt; ($\approx$)，等价于 &lt;code&gt;\equiv&lt;/code&gt; ($\equiv$)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;无穷大&lt;/strong&gt;：&lt;code&gt;\infty&lt;/code&gt; ($\infty$)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-常用希腊字母&#34;&gt;&lt;strong&gt;5. 常用希腊字母&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;\alpha&lt;/code&gt; ($\alpha$)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\beta&lt;/code&gt; ($\beta$)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\gamma&lt;/code&gt; ($\gamma$)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\Delta&lt;/code&gt; ($\Delta$)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\pi&lt;/code&gt; ($\pi$)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\mu&lt;/code&gt; ($\mu$)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-特殊顶部修饰&#34;&gt;&lt;strong&gt;6. 特殊顶部修饰&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;宽帽子&lt;/strong&gt;：&lt;code&gt;\widehat{X}&lt;/code&gt; ($\widehat{X}$)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;平均值/顶宽线&lt;/strong&gt;：&lt;code&gt;\overline{X}&lt;/code&gt; ($\overline{X}$)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;7-求和与积分&#34;&gt;&lt;strong&gt;7. 求和与积分&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;求和&lt;/strong&gt;：&lt;code&gt;\sum_{下标}^{上标}&lt;/code&gt;。代码：&lt;code&gt;$\sum_{i=1}^{n} x_i$&lt;/code&gt;-&amp;gt;$\sum_{i=1}^{n} x_i$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;积分&lt;/strong&gt;：&lt;code&gt;\int_{下限}^{上限}&lt;/code&gt;。代码：&lt;code&gt;$\int_{0}^{1} x^2 dx$&lt;/code&gt;-&amp;gt;$\int_{0}^{1} x^2 dx$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;8-特殊字符转义&#34;&gt;&lt;strong&gt;8. 特殊字符转义&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;部分符号在公式中有特定语法作用，若只需显示符号本身，需在前面加反斜杠 &lt;code&gt;\&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;百分号：&lt;code&gt;\%&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;大括号：&lt;code&gt;\{&lt;/code&gt; 和 &lt;code&gt;\}&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Markdown图片速查</title>
         <link>https://gogopaopao.github.io/newstack/p/markdown%E5%9B%BE%E7%89%87%E9%80%9F%E6%9F%A5/</link>
         <pubDate>Tue, 17 Mar 2026 17:38:37 +0800</pubDate>
@@ -129,7 +322,7 @@
         <pubDate>Tue, 17 Mar 2026 16:36:33 +0800</pubDate>
         
         <guid>https://gogopaopao.github.io/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/</guid>
-        <description>&lt;h2 id=&#34;先搞清楚数据集的特征和标签是什么&#34;&gt;先搞清楚数据集的特征和标签是什么？
+        <description>&lt;img src="https://gogopaopao.github.io/newstack/img%5C%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE.jpg" alt="Featured image of post 滚动轴承数据集学习" /&gt;&lt;h2 id=&#34;先搞清楚数据集的特征和标签是什么&#34;&gt;先搞清楚数据集的特征和标签是什么？
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/feature.png&#34;
 	width=&#34;782&#34;
 	height=&#34;223&#34;
@@ -171,6 +364,23 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;数据采集特性&#34;&gt;数据采集特性
 &lt;/h3&gt;&lt;p&gt;​	学习和测试数据集都在7z压缩文件夹中提供。每个都包含名为&lt;strong&gt;acc_xxxxx.csv的振动&lt;/strong&gt;ASCII 文件和名为&lt;strong&gt;temp_xxxxx.csv的温度&lt;/strong&gt;ASCII文件。&lt;/p&gt;
+&lt;p&gt;振动信号(水平和垂直)  轴承的上下左右振动&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;采样频率: 25.6kHz&lt;/li&gt;
+&lt;li&gt;记录:每10秒记录2560个样本(即 1/10 s )&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE.png&#34;
+	width=&#34;270&#34;
+	height=&#34;135&#34;
+	srcset=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE_hu2784163215907819008.png 480w, https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE_hu2371803287266595982.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;480px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h4 id=&#34;温度之于寿命预测影响太小&#34;&gt;温度之于寿命预测影响太小
 &lt;/h4&gt;&lt;p&gt;看数据发现没有温度的CSV文件，于是疑惑&lt;/p&gt;
 &lt;p&gt;​	在基于深度学习的滚动轴承剩余寿命预测领域，&lt;strong&gt;只用振动信号（不用温度）不仅是“可以的”，而且是“绝对的主流”。&lt;/strong&gt;&lt;/p&gt;
@@ -206,6 +416,70 @@
 		data-flex-basis=&#34;233px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h5 id=&#34;以第一行数据为例0552-0146水平竖直代表什么意思&#34;&gt;以第一行数据为例：0.552，-0.146(水平，竖直)代表什么意思
+&lt;/h5&gt;&lt;p&gt;根据数据集描述文档，加速度计型号 DYTRAN 3035B&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;50 g 测量范围  - 100mV/g&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;水平：0.552&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代表在这个瞬间，轴承在水平方向上受到了 0.552g 的加速度（相当于它承受了一半的自身重量的侧向推力）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;竖直：-0.146&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代表在这个瞬间，轴承在竖直方向上受到了 0.146g 的加速度。&lt;strong&gt;这里的负号（-）仅仅代表“方向”&lt;/strong&gt;。假设传感器规定“向上震动”为正，那么“-0.146”就表示这一瞬间轴承正在向&lt;strong&gt;下&lt;/strong&gt;震动。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;准确度定义验证模型好坏&#34;&gt;准确度定义，验证模型好坏
+&lt;/h3&gt;&lt;p&gt;​	团队的得分基于其RUL结果,这些结果已转换为预测的百分比误差。分别记 $\overline{RUL_i}$ 和 $ActRUL_i$ 为参与者估算的轴承剩余使用寿命, $ActRUL_i$ 为实际待预测的(actual) RUL(其中 $i \in [1,11]$ 代表表1中定义的测试轴承)。实验 $i$ 的百分比误差定义为:&lt;/p&gt;
+$$
+\% Er_i = 100 \times \frac{ActRUL_i - \widehat{RUL_i}}{ActRUL_i} \tag{1}
+$$
+&lt;p&gt;
+​	\( \ {\% E{r}_{i} &gt; 0} \) ：实际时间大于预估——高估了轴承&lt;/p&gt;
+&lt;p&gt;​	\( \ {\% E{r}_{i} &gt; 0} \) ：实际时间小于预估——低估了轴承&lt;/p&gt;
+&lt;p&gt;​	低估和高估的情况&lt;strong&gt;不应该以相同方式考虑&lt;/strong&gt;：早期RUL预测相关的良好估算表现 (即 \( \left. {\% E{r}_{i} &gt; 0}\right) \) ,&lt;strong&gt;考虑提前拆除&lt;/strong&gt;的情况，以及对超出实际组件RUL的RUL估算，应该给予更严重的扣除(即 \(\left. {\% E{r}_{i} &lt; 0}\right)\) 。因此,实验 \(i\) 的RUL估算&lt;strong&gt;准确度&lt;/strong&gt;得分定义如下。函数图展示了该评分函数的演变过程。&lt;/p&gt;
+&lt;p&gt;​	说人话就是：&lt;strong&gt;高估轴承寿命的代价，远比低估的代价要惨痛得多&lt;/strong&gt;&lt;/p&gt;
+$$
+{A}_{i} = \left\{  \begin{array}{ll} {ex}{p}^{-\ln \left( {0.5}\right) .\left( {E{r}_{i}/5}\right) } &amp; \text{ if }E{r}_{i} \leq  0 \\  {ex}{p}^{+\ln \left( {0.5}\right) .\left( {E{r}_{i}/{20}}\right) } &amp; \text{ if }E{r}_{i} &gt; 0 \end{array}\right. \tag{2}
+$$
+&lt;p&gt;
+即
+&lt;/p&gt;
+$$
+A_i = \begin{cases} 0.5^{-Er_i / 5} &amp; \text{当 } Er_i \le 0 \text{ （高估寿命，机器炸机）} \\ 0.5^{Er_i / 20} &amp; \text{当 } Er_i &gt; 0 \text{ （低估寿命，提前拆除）} \end{cases}
+$$
+&lt;p&gt;
+官方通过把&lt;strong&gt;分母&lt;/strong&gt;分别设定为 5 和 20，强制画出了两条下降速度完全不同的曲线：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;高估的悬崖&lt;/strong&gt;：向左走（高估），分母是 5，分数掉得极快，是个陡峭的悬崖。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;低估的缓坡&lt;/strong&gt;：向右走（低估），分母是 20，分数掉得慢，是个平缓的下坡。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE.jpg&#34;
+	width=&#34;722&#34;
+	height=&#34;439&#34;
+	srcset=&#34;https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE_hu2011434099825033110.jpg 480w, https://gogopaopao.github.io/newstack/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE_hu15204571121963953336.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;函数图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;394px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;所有 RUL 估计的最终得分被定义为所有实验得分的平均值:	
+&lt;/p&gt;
+\[
+\text{ Score } = \frac{1}{11}\mathop{\sum }\limits_{{i = 1}}^{{11}}\left( {A}_{i}\right) \tag{3}
+\]
+&lt;h3 id=&#34;需估算的实际剩余使用寿命rul&#34;&gt;需估算的实际剩余使用寿命(RUL)
+&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;Test set&lt;/td&gt;&lt;td&gt;Actual RUL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_3&lt;/td&gt;&lt;td&gt;5730 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_4&lt;/td&gt;&lt;td&gt;339 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_5&lt;/td&gt;&lt;td&gt;1610 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_6&lt;/td&gt;&lt;td&gt;1460 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing1_7&lt;/td&gt;&lt;td&gt;7570 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_3&lt;/td&gt;&lt;td&gt;7530 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_4&lt;/td&gt;&lt;td&gt;1390 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_5&lt;/td&gt;&lt;td&gt;3090 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_6&lt;/td&gt;&lt;td&gt;1290 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing2_7&lt;/td&gt;&lt;td&gt;580 s&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bearing3_3&lt;/td&gt;&lt;td&gt;820 s&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/583606882&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;IEEE PHM 2012 Prognostic challenge Outline, Experiments, Scoring of results, Winners&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_46698539/article/details/133618414?ops_request_misc=elastic_search_misc&amp;amp;request_id=1a42fcb9a074ae9088bcd8c696562fec&amp;amp;biz_id=0&amp;amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-133618414-null-null.142%5ev102%5epc_search_result_base3&amp;amp;utm_term=PHM2012&amp;amp;spm=1018.2226.3001.4187&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PRONOSTIA : An experimental platform for bearings accelerated degradation tests.&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -250,8 +524,7 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;三-front-matter-属性大全-toml-格式&#34;&gt;三、 Front Matter 属性大全 (TOML 格式)
 &lt;/h2&gt;&lt;h3 id=&#34;1-基础与排版-必填常用&#34;&gt;1. 基础与排版 (必填/常用)
-&lt;/h3&gt;&lt;p&gt;Ini, TOML&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -268,8 +541,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;2-内容组织-taxonomies&#34;&gt;2. 内容组织 (Taxonomies)
-&lt;/h3&gt;&lt;p&gt;Ini, TOML&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -280,8 +552,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;3-展示与-seo-stack-主题视觉核心&#34;&gt;3. 展示与 SEO (Stack 主题视觉核心)
-&lt;/h3&gt;&lt;p&gt;Ini, TOML&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -294,8 +565,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;4-stack-主题专属高级开关&#34;&gt;4. Stack 主题专属高级开关
-&lt;/h3&gt;&lt;p&gt;Ini, TOML&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -313,7 +583,6 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;5-外部链接卡片&#34;&gt;5. 外部链接卡片
 &lt;/h3&gt;&lt;p&gt;在文章末尾自动渲染出漂亮的外部链接卡片，适合指向代码仓库或参考资料：&lt;/p&gt;
-&lt;p&gt;Ini, TOML&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -332,7 +601,6 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;四-进阶技巧自定义默认模板-archetypes&#34;&gt;四、 进阶技巧：自定义默认模板 (Archetypes)
 &lt;/h2&gt;&lt;p&gt;如果不想每次新建文章都手动敲这些属性，可以修改博客根目录下的 &lt;strong&gt;&lt;code&gt;archetypes/default.md&lt;/code&gt;&lt;/strong&gt; 文件。将其内容替换为你最常用的组合，例如：&lt;/p&gt;
-&lt;p&gt;Ini, TOML&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -367,14 +635,14 @@
         <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
         
         <guid>https://gogopaopao.github.io/newstack/p/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E6%96%87%E7%8C%AE/</guid>
-        <description>&lt;h3 id=&#34;绝大多数论文都是以下的八股结构&#34;&gt;绝大多数论文都是以下的八股结构
+        <description>&lt;img src="https://gogopaopao.github.io/newstack/p/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E6%96%87%E7%8C%AE/1.png" alt="Featured image of post 如何阅读深度学习相关文献" /&gt;&lt;h3 id=&#34;绝大多数论文都是以下的八股结构&#34;&gt;绝大多数论文都是以下的八股结构
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;title 标题 作者&lt;/li&gt;
 &lt;li&gt;abstract 摘要&lt;/li&gt;
 &lt;li&gt;intro  导言&lt;/li&gt;
 &lt;li&gt;method  相关工作，重要部分：你提出的算法&lt;/li&gt;
 &lt;li&gt;exp  实验证明可行性&lt;/li&gt;
-&lt;li&gt;conclusion 结论s&lt;/li&gt;
+&lt;li&gt;conclusion 结论&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;花三遍读完一篇论文&#34;&gt;花三遍读完一篇论文
 &lt;/h3&gt;&lt;h4 id=&#34;pass1-海选知道这篇论文在讲什么-通常十几分钟-决定要不要再读下去&#34;&gt;pass1 海选：知道这篇论文在讲什么 通常十几分钟 决定要不要再读下去

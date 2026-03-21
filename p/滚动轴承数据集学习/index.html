@@ -10,13 +10,31 @@
 <meta property='og:description' content="先搞清楚数据集的特征和标签是什么？ 特征是输入，标签是输出 什么是特征工程？ 特征工程就是在有限的特征的情况下，怎么样在有限的特征中找出更多更好的">
 <meta property='og:url' content='https://gogopaopao.github.io/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/'>
 <meta property='og:site_name' content='主页'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-03-17T16:36:33&#43;08:00'/><meta property='article:modified_time' content='2026-03-17T16:36:33&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-03-17T16:36:33&#43;08:00'/><meta property='article:modified_time' content='2026-03-17T16:36:33&#43;08:00'/><meta property='og:image' content='https://gogopaopao.github.io/newstack/img%5C%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE.jpg' />
 <meta name="twitter:title" content="滚动轴承数据集学习">
-<meta name="twitter:description" content="先搞清楚数据集的特征和标签是什么？ 特征是输入，标签是输出 什么是特征工程？ 特征工程就是在有限的特征的情况下，怎么样在有限的特征中找出更多更好的">
+<meta name="twitter:description" content="先搞清楚数据集的特征和标签是什么？ 特征是输入，标签是输出 什么是特征工程？ 特征工程就是在有限的特征的情况下，怎么样在有限的特征中找出更多更好的"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gogopaopao.github.io/newstack/img%5C%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE.jpg' />
     <link rel="shortcut icon" href="/newstack/favicon.ico" />
 
   
 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
 
     </head>
     <body class="
@@ -269,20 +287,23 @@
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#先搞清楚数据集的特征和标签是什么">先搞清楚数据集的特征和标签是什么？</a></li>
     <li><a href="#什么是特征工程">什么是特征工程？</a></li>
     <li><a href="#经典的滚动轴承寿命预测数据集学习">经典的滚动轴承寿命预测数据集学习</a>
-      <ol>
+      <ul>
         <li><a href="#数据采集特性">数据采集特性</a>
-          <ol>
+          <ul>
             <li><a href="#温度之于寿命预测影响太小">温度之于寿命预测影响太小</a></li>
             <li><a href="#数据采集参数">数据采集参数</a></li>
-          </ol>
+          </ul>
         </li>
-      </ol>
+        <li><a href="#准确度定义验证模型好坏">准确度定义，验证模型好坏</a></li>
+        <li><a href="#需估算的实际剩余使用寿命rul">需估算的实际剩余使用寿命(RUL)</a></li>
+      </ul>
     </li>
-  </ol>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
 </nav>
         </div>
     </section>
@@ -293,8 +314,16 @@
 
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/">
+                
+                    <img src="/newstack/img%5c%e8%af%84%e5%88%86%e5%87%bd%e6%95%b0%e7%9a%84%e5%9b%be.jpg" loading="lazy" alt="Featured image of post 滚动轴承数据集学习" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -350,7 +379,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -407,6 +436,23 @@
 </ul>
 <h3 id="数据采集特性">数据采集特性
 </h3><p>​	学习和测试数据集都在7z压缩文件夹中提供。每个都包含名为<strong>acc_xxxxx.csv的振动</strong>ASCII 文件和名为<strong>temp_xxxxx.csv的温度</strong>ASCII文件。</p>
+<p>振动信号(水平和垂直)  轴承的上下左右振动</p>
+<ul>
+<li>采样频率: 25.6kHz</li>
+<li>记录:每10秒记录2560个样本(即 1/10 s )</li>
+</ul>
+<p><img src="/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE.png"
+	width="270"
+	height="135"
+	srcset="/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE_hu2784163215907819008.png 480w, /newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E6%8C%AF%E5%8A%A8%E9%87%87%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE_hu2371803287266595982.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
 <h4 id="温度之于寿命预测影响太小">温度之于寿命预测影响太小
 </h4><p>看数据发现没有温度的CSV文件，于是疑惑</p>
 <p>​	在基于深度学习的滚动轴承剩余寿命预测领域，<strong>只用振动信号（不用温度）不仅是“可以的”，而且是“绝对的主流”。</strong></p>
@@ -442,6 +488,70 @@
 		data-flex-basis="233px"
 	
 ></p>
+<h5 id="以第一行数据为例0552-0146水平竖直代表什么意思">以第一行数据为例：0.552，-0.146(水平，竖直)代表什么意思
+</h5><p>根据数据集描述文档，加速度计型号 DYTRAN 3035B</p>
+<ul>
+<li>50 g 测量范围  - 100mV/g</li>
+</ul>
+<p><strong>水平：0.552</strong></p>
+<blockquote>
+<p>代表在这个瞬间，轴承在水平方向上受到了 0.552g 的加速度（相当于它承受了一半的自身重量的侧向推力）。</p>
+</blockquote>
+<p><strong>竖直：-0.146</strong></p>
+<blockquote>
+<p>代表在这个瞬间，轴承在竖直方向上受到了 0.146g 的加速度。<strong>这里的负号（-）仅仅代表“方向”</strong>。假设传感器规定“向上震动”为正，那么“-0.146”就表示这一瞬间轴承正在向<strong>下</strong>震动。</p>
+</blockquote>
+<h3 id="准确度定义验证模型好坏">准确度定义，验证模型好坏
+</h3><p>​	团队的得分基于其RUL结果,这些结果已转换为预测的百分比误差。分别记 $\overline{RUL_i}$ 和 $ActRUL_i$ 为参与者估算的轴承剩余使用寿命, $ActRUL_i$ 为实际待预测的(actual) RUL(其中 $i \in [1,11]$ 代表表1中定义的测试轴承)。实验 $i$ 的百分比误差定义为:</p>
+$$
+\% Er_i = 100 \times \frac{ActRUL_i - \widehat{RUL_i}}{ActRUL_i} \tag{1}
+$$
+<p>
+​	\( \ {\% E{r}_{i} > 0} \) ：实际时间大于预估——高估了轴承</p>
+<p>​	\( \ {\% E{r}_{i} > 0} \) ：实际时间小于预估——低估了轴承</p>
+<p>​	低估和高估的情况<strong>不应该以相同方式考虑</strong>：早期RUL预测相关的良好估算表现 (即 \( \left. {\% E{r}_{i} > 0}\right) \) ,<strong>考虑提前拆除</strong>的情况，以及对超出实际组件RUL的RUL估算，应该给予更严重的扣除(即 \(\left. {\% E{r}_{i} < 0}\right)\) 。因此,实验 \(i\) 的RUL估算<strong>准确度</strong>得分定义如下。函数图展示了该评分函数的演变过程。</p>
+<p>​	说人话就是：<strong>高估轴承寿命的代价，远比低估的代价要惨痛得多</strong></p>
+$$
+{A}_{i} = \left\{  \begin{array}{ll} {ex}{p}^{-\ln \left( {0.5}\right) .\left( {E{r}_{i}/5}\right) } & \text{ if }E{r}_{i} \leq  0 \\  {ex}{p}^{+\ln \left( {0.5}\right) .\left( {E{r}_{i}/{20}}\right) } & \text{ if }E{r}_{i} > 0 \end{array}\right. \tag{2}
+$$
+<p>
+即
+</p>
+$$
+A_i = \begin{cases} 0.5^{-Er_i / 5} & \text{当 } Er_i \le 0 \text{ （高估寿命，机器炸机）} \\ 0.5^{Er_i / 20} & \text{当 } Er_i > 0 \text{ （低估寿命，提前拆除）} \end{cases}
+$$
+<p>
+官方通过把<strong>分母</strong>分别设定为 5 和 20，强制画出了两条下降速度完全不同的曲线：</p>
+<ul>
+<li><strong>高估的悬崖</strong>：向左走（高估），分母是 5，分数掉得极快，是个陡峭的悬崖。</li>
+<li><strong>低估的缓坡</strong>：向右走（低估），分母是 20，分数掉得慢，是个平缓的下坡。</li>
+</ul>
+<p><img src="/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE.jpg"
+	width="722"
+	height="439"
+	srcset="/newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE_hu2011434099825033110.jpg 480w, /newstack/p/%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AD%A6%E4%B9%A0/img/%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE_hu15204571121963953336.jpg 1024w"
+	loading="lazy"
+	
+		alt="函数图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="164"
+		data-flex-basis="394px"
+	
+></p>
+<p>所有 RUL 估计的最终得分被定义为所有实验得分的平均值:	
+</p>
+\[
+\text{ Score } = \frac{1}{11}\mathop{\sum }\limits_{{i = 1}}^{{11}}\left( {A}_{i}\right) \tag{3}
+\]
+<h3 id="需估算的实际剩余使用寿命rul">需估算的实际剩余使用寿命(RUL)
+</h3><div class="table-wrapper"><table><tr><td>Test set</td><td>Actual RUL</td></tr><tr><td>Bearing1_3</td><td>5730 s</td></tr><tr><td>Bearing1_4</td><td>339 s</td></tr><tr><td>Bearing1_5</td><td>1610 s</td></tr><tr><td>Bearing1_6</td><td>1460 s</td></tr><tr><td>Bearing1_7</td><td>7570 s</td></tr><tr><td>Bearing2_3</td><td>7530 s</td></tr><tr><td>Bearing2_4</td><td>1390 s</td></tr><tr><td>Bearing2_5</td><td>3090 s</td></tr><tr><td>Bearing2_6</td><td>1290 s</td></tr><tr><td>Bearing2_7</td><td>580 s</td></tr><tr><td>Bearing3_3</td><td>820 s</td></tr></table></div>
+<h2 id="参考资料">参考资料
+</h2><p><a class="link" href="https://zhuanlan.zhihu.com/p/583606882"  target="_blank" rel="noopener"
+    >IEEE PHM 2012 Prognostic challenge Outline, Experiments, Scoring of results, Winners</a></p>
+<p><a class="link" href="https://blog.csdn.net/qq_46698539/article/details/133618414?ops_request_misc=elastic_search_misc&amp;request_id=1a42fcb9a074ae9088bcd8c696562fec&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-133618414-null-null.142%5ev102%5epc_search_result_base3&amp;utm_term=PHM2012&amp;spm=1018.2226.3001.4187"  target="_blank" rel="noopener"
+    >PRONOSTIA : An experimental platform for bearings accelerated degradation tests.</a></p>
 
 </section>
 
@@ -452,6 +562,30 @@
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
     
 </article>
 
@@ -465,9 +599,20 @@
         <div class="flex article-list--tile">
             
                 
-<article class="">
+<article class="has-image">
     <a href="/newstack/p/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E6%96%87%E7%8C%AE/">
         
+        
+            <div class="article-image">
+                <img src="/newstack/p/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E6%96%87%E7%8C%AE/1.3da498b3264154d0779053ab4d709454_hu14704500923193509174.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 如何阅读深度学习相关文献"
+                        
+                        data-hash="md5-PaSYsyZBVNB3kFOrTXCUVA==">
+                
+            </div>
         
 
         <div class="article-details">
