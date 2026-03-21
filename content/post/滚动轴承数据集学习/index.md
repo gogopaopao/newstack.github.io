@@ -3,7 +3,7 @@ title = '滚动轴承数据集学习'
 date = 2026-03-17T16:36:33+08:00
 categories = ["深度学习", "数据集"]
 math = true
-image = 'img\评分函数的图.jpg'
+image = 'img/评分函数的图.jpg'
 +++
 
 ## 先搞清楚数据集的特征和标签是什么？
