@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>速查 on 主页</title>
+        <title>速查 on 从容的老师傅の博客</title>
         <link>https://gogopaopao.github.io/newstack/categories/%E9%80%9F%E6%9F%A5/</link>
-        <description>Recent content in 速查 on 主页</description>
+        <description>Recent content in 速查 on 从容的老师傅の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>gogopaopao</copyright>
@@ -323,7 +323,7 @@
         
         <guid>https://gogopaopao.github.io/newstack/p/hugo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
         <description>&lt;p&gt;调试命令：hugo server -D&lt;/p&gt;
-&lt;p&gt;创建文章：hugo new content post/要创建的文章目录/index.md&lt;/p&gt;
+&lt;p&gt;创建文章：hugo new content post/要创建的文章目录/index.md	（用中文命名不影响）&lt;/p&gt;
 &lt;p&gt;删除文章：在 Hugo 中，&lt;strong&gt;没有专门的命令&lt;/strong&gt;（比如 &lt;code&gt;hugo delete&lt;/code&gt;）用来删除文章。&lt;/p&gt;
 &lt;p&gt;​		要删除一篇文章，你只需要&lt;strong&gt;在你的文件系统中把对应的文件或文件夹直接删掉&lt;/strong&gt;就可以了。&lt;/p&gt;
 &lt;p&gt;GitHub自动上传  （cmd中）&lt;/p&gt;
@@ -461,7 +461,65 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;h2 id=&#34;-开发问题记录与避坑指南&#34;&gt;📝 开发问题记录与避坑指南
+&lt;/h2&gt;&lt;h3 id=&#34;一-git-提交信息如何包含系统时间&#34;&gt;一、 Git 提交信息如何包含系统时间？
+&lt;/h3&gt;&lt;p&gt;在不同终端（Shell）下，获取系统时间的语法不同。如果语法写错，Git 会把代码直接当成普通文本。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;终端环境 (Terminal)&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;提交命令示例&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;备注&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;CMD (Windows)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git commit -m &amp;quot;%date% %time%&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;格式受 Windows 区域设置影响&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;PowerShell&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git commit -m &amp;quot;$(Get-Date -Format &#39;yyyy-MM-dd HH:mm:ss&#39;)&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;推荐，格式最整齐&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Git Bash / Linux&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git commit -m &amp;quot;$(date &#39;+%Y-%m-%d %H:%M:%S&#39;)&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;标准 Linux 语法&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;二-hugo-图片本地显示线上不显示&#34;&gt;二、 Hugo 图片本地显示、线上不显示
+&lt;/h3&gt;&lt;p&gt;这种情况通常是因为 Windows（本地）和 Linux（GitHub Pages/服务器）对文件路径的处理差异造成的。&lt;/p&gt;
+&lt;h4 id=&#34;1-路径分隔符错误-最核心原因&#34;&gt;1. 路径分隔符错误 (最核心原因)
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;错误&lt;/strong&gt;：&lt;code&gt;img\picture.jpg&lt;/code&gt; (Windows 风格反斜杠)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;正确&lt;/strong&gt;：&lt;code&gt;img/picture.jpg&lt;/code&gt; (Web 标准正斜杠)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;原理&lt;/strong&gt;：线上服务器只识别 &lt;code&gt;/&lt;/code&gt;，反斜杠会被当作无效路径。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-静态资源路径逻辑&#34;&gt;2. 静态资源路径逻辑
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Hugo 的图片通常放在 &lt;code&gt;static/img/&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在 Markdown 或配置文件中引用时，&lt;strong&gt;必须省略&lt;/strong&gt; &lt;code&gt;static&lt;/code&gt; 这一层级。&lt;/li&gt;
+&lt;li&gt;正确引用：&lt;code&gt;/img/picture.jpg&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-大小写敏感性&#34;&gt;3. 大小写敏感性
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;本地 Windows 不区分 &lt;code&gt;Image.jpg&lt;/code&gt; 和 &lt;code&gt;image.jpg&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;线上 Linux 严格区分。如果文件名是大写但代码里写的小写，图片会 404。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-最佳实践建议&#34;&gt;4. 最佳实践建议
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;文件名禁止中文&lt;/strong&gt;：建议改用英文和连字符（如 &lt;code&gt;score-plot.jpg&lt;/code&gt;），避免 URL 编码乱码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;统一小写&lt;/strong&gt;：文件名和代码全部使用小写。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;三为什么大标题不显示&#34;&gt;三、为什么大标题不显示
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;层级问题&lt;/strong&gt;：默认目录从 &lt;code&gt;##&lt;/code&gt; (H2) 开始抓取。如果你的标题是用 &lt;code&gt;#&lt;/code&gt; (H1) 写的，它不会出现在目录里。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方法&lt;/strong&gt;：将正文第一个大标题改为 &lt;code&gt;##&lt;/code&gt; 开头。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         
     </channel>
